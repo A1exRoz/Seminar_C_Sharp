@@ -29,11 +29,16 @@ void inputMatrix(int[,] matrix)
 
 void SwapFirstLastString (int[,] matrix)
 {
-    for (int j = 0; j < matrix.GetLength(1); j++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        int a = matrix[0, j];
-        matrix[0, j] = matrix[matrix.GetLength(0) - 1, j];
-        matrix[matrix.GetLength(0) - 1, j] = a;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            int a = matrix[0, j];
+            matrix[0, j] = matrix[matrix.GetLength(0) - 1, j];
+            matrix[matrix.GetLength(0) - 1, j] = a;
+            Console.Write($"{matrix[i, j]} \t");
+        }
+        Console.WriteLine();
     }
 }
 
@@ -42,4 +47,5 @@ Console.Write("Введите размеры матрицы: ");
 int[] coord = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
 int[,] matrix = new int[coord[0], coord[1]];
 inputMatrix(matrix);
+Console.WriteLine();
 SwapFirstLastString(matrix);
